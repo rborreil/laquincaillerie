@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29uY2VydHxlbnwwfHwwfHx8Mg%3D%3D",
 
-    "https://images.unsplash.com/photo-1651323018466-b36b7df1d2b1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "./img/Logo-blanc-fond-transparent-La-Canaillerie-2048x879.png",
   ];
   const EVENTS = [
     {

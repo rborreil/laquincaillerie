@@ -234,10 +234,10 @@
               ><span class="chip">Gambas</span><span class="chip">Brebis</span>
             </div>
           </div>
-          <div class="card overflow-hidden">
+          <div class="card overflow-hidden px-10 py-20">
             <img
-              class="w-full h-80 object-cover"
-              src="https://images.unsplash.com/photo-1595173853421-2b410fa57f43?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW5nbGV0fGVufDB8fDB8fHwy"
+              class="w-full h-full object-cover"
+              src="./img/Logo-blanc-fond-transparent-La-Canaillerie-2048x879.png"
               alt="Salle"
             />
           </div>
@@ -246,7 +246,7 @@
 
       <div class="divider"></div>
 
-      <!-- GALLERY / ambiance loop -->
+      <!-- AMBIANCE / gallery loop -->
       <section id="gallery" class="section">
         <div class="max-w-screen-2xl mx-auto px-4">
           <div class="flex items-end justify-between mb-6">
@@ -295,7 +295,7 @@
         </div>
       </section>
 
-      <div class="divider"></div>
+      <!-- <div class="divider"></div> -->
 
       <!-- BOOK / contact quick -->
       <section id="book" class="section">
@@ -304,6 +304,7 @@
             <h2 class="brand text-3xl">Réservations</h2>
           </div>
           <div class="mx-auto px-4 grid md:grid-cols-2 gap-8 items-start">
+            <!-- Résa table -->
             <div class="card p-5">
               <h3 class="text-xl font-semibold mb-3">Réserver une table</h3>
               <form id="resa" class="grid gap-3">
@@ -360,6 +361,14 @@
               </form>
               <div id="resa-msg" class="mt-2 text-sm"></div>
             </div>
+
+            <!-- <iframe
+              src="zenchef-simulation.html"
+              class="w-full max-w-xl h-[600px] border-0 rounded-xl shadow-lg"
+              loading="lazy"
+            ></iframe> -->
+
+            <!-- Event -->
             <div class="card p-5">
               <h3 class="text-xl font-semibold mb-3">Organiser un event</h3>
               <form id="b2b" class="grid gap-3">
@@ -435,7 +444,8 @@
             <div class="card p-5">
               <div class="font-semibold mb-2">Horaires</div>
               <div class="text-slate-400 text-sm">
-                Mardi : Fermé<br />Lun-Mer–Jeu : 08:30–19:00<br />Ven–Sam-Dim : 08:30–23:00
+                Mardi : Fermé<br />Lun-Mer–Jeu : 08:30–19:00<br />Ven–Sam-Dim :
+                08:30–23:00
               </div>
               <div class="mt-4 font-semibold mb-2">Newsletter</div>
               <form id="nl" class="flex gap-2">
@@ -455,11 +465,13 @@
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="border-t border-white/10 py-8">
       <div
-        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400"
+        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10 text-sm text-slate-400"
       >
         <div>© <span id="year"></span> La Canaillerie — Anglet</div>
+        <img class="w-28" src="./img/Logo-blanc-fond-transparent-La-Canaillerie-2048x879.png" alt="">
         <div class="flex gap-3">
           <span class="chip">Instagram</span><span class="chip">Facebook</span
           ><span class="chip">TikTok</span><span class="chip">Twitter</span
