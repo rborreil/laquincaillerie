@@ -54,13 +54,51 @@ body {
   left: 0;
 }
 
+/* Gestion du mode preview */
+.menu-item.open .thumb {
+  display: none;
+}
+
+.menu-item.open .info {
+  display: none;
+}
+
+.menu-item.open::after {
+  content: "";
+  display: block;
+}
+
+.menu-item {
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* .menu-item .info {
+    padding-top: 40%;
+    padding-bottom: 40%;
+} */
+
+.menu-item.open {
+  transform: scale(1.2); /* agrandit tout le card */
+  z-index: 20;
+  position: relative;
+}
+
+.menu-item.open img {
+  /* background-position: center; */
+  transform: scale(1);
+  /* transform: translateY(10%); */
+  transition: transform 0.3s ease;
+}
+
+
+/* Ambiance */
 #gallery {
   /* background-image: radial-gradient((1200px_400px_at_50%_-10%,rgba(224,176,102,.12),rgba(0,0,0,0))); */
-  /* background-image: url("../img/Logo-blanc-fond-transparent-La-Canaillerie-2048x879.png"); */
+  /* background-image: url("../img/Logo-blanc-fond-transparent-La-Quincaillerie-2048x879.png"); */
 }
 
 #book {
-    background-image: url("../img/Logo-blanc-fond-transparent-La-Canaillerie-2048x879.png");
+    background-image: url("../img/Logo-blanc-fond-transparent-La-Quincaillerie-2048x879.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

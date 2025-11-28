@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
       from: "",
       price: 22,
       tag: "signature",
-      img: "./img/planche-canaillerie-scaled.jpg",
+      img: "./img/planche-quincaillerie-scaled.jpg",
     },
     {
       name: "Le poireau vinaigrette à la noisette",
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       from: "",
       price: 7,
       tag: "signature",
-      img: "./img/entree-poireau-canaillerie.jpg",
+      img: "./img/entree-poireau-quincaillerie.jpg",
     },
     {
       name: "Tapas",
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       from: "À partir de",
       price: 7,
       tag: "signature",
-      img: "./img/tapas-canaillerie.jpg",
+      img: "./img/tapas-quincaillerie.jpg",
     },
   ];
   const MENUS = [
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "https://images.unsplash.com/photo-1630257574313-9bacc3c521d8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9uZHVlJTIwc2F2b3lhcmRlfGVufDB8fDB8fHwy",
 
-    "https://www.lacanaillerie-anglet.fr/wp-content/uploads/2025/10/pexels-rdne-12169252.jpg",
+    "./img/Logo-blanc-fond-transparent-La-quincaillerie-2048x879.png",
 
     "https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmklQzMlQThyZXxlbnwwfHwwfHx8Mg%3D%3D",
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29uY2VydHxlbnwwfHwwfHx8Mg%3D%3D",
 
-    "./img/Logo-blanc-fond-transparent-La-Canaillerie-2048x879.png",
+    "./img/Logo-blanc-fond-transparent-La-quincaillerie-2048x879.png",
   ];
   const EVENTS = [
     {
@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
   mgrid.innerHTML = MENUS.map(
     (m) => `
       <article class="menu-item card overflow-hidden cursor-pointer" data-image="${m.img}">
-        <div class="h-80 w-full bg-cover bg-center" style="background-image:url('${m.img}')"></div>
-        <div class="p-4">
+        <div class="thumb h-44 w-full bg-cover bg-top" style="background-image:url('${m.img}')"></div>
+        <div class="p-4 info text-center py-10 md:py-20 lg:py-32">
               <h3 class="font-semibold">${m.name}</h3>
               <p class="text-slate-400 text-sm">${m.desc}</p>
         </div>
@@ -136,23 +136,34 @@ document.addEventListener("DOMContentLoaded", function () {
   ).join("");
 
   // JS pour afficher l’image au clic
+  // const mgrid = document.getElementById("menu-grid");
 
-  // const preview = document.getElementById("menu-preview");
-  // const previewImg = document.getElementById("menu-preview-img");
+  mgrid.addEventListener("click", (e) => {
+    const item = e.target.closest(".menu-item");
+    if (!item) return;
 
-  // mgrid.addEventListener("click", (e) => {
-  //   const item = e.target.closest(".menu-item");
-  //   if (!item) return;
+    // Si déjà ouverte → toggle off (replier)
+    if (item.classList.contains("open")) {
+      item.classList.remove("open");
+      item.querySelector("img")?.remove();
+      return;
+    }
 
-  //   const img = item.dataset.image;
+    // Ferme les autres
+    document.querySelectorAll(".menu-item.open").forEach((el) => {
+      el.classList.remove("open");
+      el.querySelector("img")?.remove();
+    });
 
-  //   // Empêche le flash si la même image est déjà affichée
-  //   if (previewImg.src !== img) {
-  //     previewImg.src = img;
-  //   }
+    // Ouvre celle-ci
+    item.classList.add("open");
 
-  //   preview.classList.remove("hidden");
-  // });
+    const fullImg = document.createElement("img");
+    fullImg.src = item.dataset.image;
+    fullImg.className = "w-full h-auto rounded-xl";
+
+    item.appendChild(fullImg);
+  });
 
   // Gallery
   const gal = $("#gal");
