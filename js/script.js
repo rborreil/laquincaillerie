@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
   const GALLERY = [
-    "https://images.unsplash.com/photo-1504549380528-d0ab2b0f789c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1530870110042-98b2cb110834?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHN1cmZ8ZW58MHx8MHx8fDI%3D",
 
     "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YyVDMyVCNHRlJTIwZGUlMjBib2V1ZnxlbnwwfHwwfHx8Mg%3D%3D",
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29uY2VydHxlbnwwfHwwfHx8Mg%3D%3D",
 
-    "./img/Logo-blanc-fond-transparent-La-Quincaillerie-2048x879.png",
+    "https://images.unsplash.com/photo-1754685630685-fd0539d63543?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwc3BvcnR8ZW58MHx8MHx8fDI%3D",
   ];
   const NOSEVENTS = [
     {
@@ -107,10 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
       img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YW5uaXZlcnNhaXJlfGVufDB8fDB8fHwy",
     },
     {
-      title: "B2B -- Off-sites, séminaires, lancements produits",
+      // title: "B2B -- Off-sites, séminaires, lancements produits",
+      title: "Animations sur-mesure",
       // date: "21 sept · 11:30",
-      desc: "Ateliers, chef table, afterwork avec musique.",
-      img: "https://images.unsplash.com/photo-1531380096452-2c5fa9bb9589?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b2FrbGV5fGVufDB8fDB8fHwy",
+      // desc: "Ateliers, chef table, afterwork avec musique.",
+      desc: "Tournoi de beach volley, initiation surf, jeux basques en plein air.",
+      // img: "https://images.unsplash.com/photo-1531380096452-2c5fa9bb9589?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b2FrbGV5fGVufDB8fDB8fHwy",
+      img: "https://images.unsplash.com/photo-1631493657014-9d26a046d89b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJlYWNoJTIwc3BvcnR8ZW58MHx8MHx8fDI%3D",
     },
   ];
 
@@ -212,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
   yeg.innerHTML = VOSEVENTS.map(
     (e) => `
 <article class= "card overflow-hidden">
-        <div class="h-40 bg-cover bg-[50%_70%]" style="background-image:url('${e.img}');"></div>
+        <div class="h-40 bg-cover bg-[0%_58%]" style="background-image:url('${e.img}');"></div>
         <div class="p-4">
           <h3 class="font-semibold">${e.title}</h3>
           <p class="text-slate-400 text-sm">${e.desc}</p>
