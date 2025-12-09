@@ -20,8 +20,8 @@ html {
 
 body {
   font-family: Manrope, system-ui;
-  /* background: linear-gradient(180deg, var(--darkgreen), var(--nightgreen)); */
-  background: var(--darkgreen);
+  background: linear-gradient(180deg, var(--darkgreen), var(--nightgreen));
+  /* background: var(--darkgreen); */
   color: #e5e7eb;
   /* overflow-x: hidden; */
 }
@@ -41,11 +41,26 @@ body {
 
 .hero {
   /* background-image: url('https://plus.unsplash.com/premium_photo-1697729704609-7ebbc2714df1?q=80&amp;w=857&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
-  background-image: url('../img/sunset-phare.jpg');
-  /* background-position: 50%; */
+  background-image: url("../img/sunset-phare.jpg");
+  /* background-image: var(--nightgreen); */
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 70%;
+  background-position-y: -750px;
+}
+@media (min-width: 768px) {
+  .hero {
+    background-position-y: -500px;
+  }
+}
+@media (min-width: 1023px) {
+  .hero {
+    background-position-y: -500px;
+  }
+}
+@media (min-width: 1700px) {
+  .hero {
+    background-position-y: -1000px;
+  }
 }
 
 .hero::before {
@@ -92,7 +107,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-
 /* Ambiance */
 #gallery {
   /* background-image: radial-gradient((1200px_400px_at_50%_-10%,rgba(224,176,102,.12),rgba(0,0,0,0))); */
@@ -100,10 +114,10 @@ body {
 }
 
 #book {
-    background-image: url("../img/Logo-blanc-fond-transparent-La-Quincaillerie-2048x879.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  background-image: url("../img/Logo-blanc-fond-transparent-La-Quincaillerie-2048x879.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 @media (min-width: 980px) {
   #book {
@@ -157,7 +171,7 @@ body {
   background: linear-gradient(
     180deg,
     rgba(15, 23, 42, 0.6),
-    rgba(15, 23, 42, 0.2)
+    rgba(15, 23, 42, 0.4)
   );
 }
 

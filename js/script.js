@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "./img/Logo-blanc-fond-transparent-La-Quincaillerie-2048x879.png",
   ];
-  const EVENTS = [
+  const NOSEVENTS = [
     {
       title: "DJ Sunset Session",
       date: "12 sept · 19:00",
@@ -81,10 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
       img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGp8ZW58MHx8MHx8fDA%3D",
     },
     {
-      title: "Lancement produit",
+      title: "One Human Show",
       date: "21 sept · 18:30",
-      desc: "Food pairing grillades/mer · cocktails brandés.",
-      img: "https://images.unsplash.com/photo-1554177255-61502b352de3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHIlQzMlQTlzZWF1eCUyMHNvY2lhdXh8ZW58MHx8MHx8fDA%3D",
+      desc: "Amateurs de la blague & des franches rigolades",
+      img: "https://images.unsplash.com/photo-1607805074620-5802aee47bdb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29tJUMzJUE5ZGllbnxlbnwwfHwwfHx8Mg%3D%3D",
     },
     {
       title: "Brunch Marée Basse",
@@ -93,12 +93,33 @@ document.addEventListener("DOMContentLoaded", function () {
       img: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop",
     },
   ];
+  const VOSEVENTS = [
+    {
+      title: "Privatisation",
+      // date: "12 sept · 19:00",
+      desc: "Jusqu'à 120 pers · DJ set · Bar signature · Scénographie · One Human Show.",
+      img: "https://images.unsplash.com/photo-1635548166842-bf67bacbefaa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ciVDMyVBOXNlcnZhdGlvbnxlbnwwfHwwfHx8Mg%3D%3D",
+    },
+    {
+      title: "Anniversaires, EVG / EVJF, Afterworks",
+      // date: "21 sept · 18:30",
+      desc: "Formules spéciales & services spéciaux, discutons-en !",
+      img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YW5uaXZlcnNhaXJlfGVufDB8fDB8fHwy",
+    },
+    {
+      title: "B2B -- Off-sites, séminaires, lancements produits",
+      // date: "21 sept · 11:30",
+      desc: "Ateliers, chef table, afterwork avec musique.",
+      img: "https://images.unsplash.com/photo-1531380096452-2c5fa9bb9589?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b2FrbGV5fGVufDB8fDB8fHwy",
+    },
+  ];
 
   // ---- Helpers -----------------------------------------------------------
   const euros = (n) => n.toFixed(2).replace(".", ",") + " €";
   const $ = (s) => document.querySelector(s);
 
-  // Menu Stars cards
+  // GRILLES
+  // Menu Stars
   const msgrid = $("#menu-stars-grid");
   msgrid.innerHTML = MENUSTARS.map(
     (m) => `
@@ -122,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </article> `
   ).join("");
 
-  // Menu cards
+  // Menu Regular
   const mgrid = $("#menu-grid");
   mgrid.innerHTML = MENUS.map(
     (m) => `
@@ -172,12 +193,12 @@ document.addEventListener("DOMContentLoaded", function () {
       `<div class= "aspect-square rounded-xl overflow-hidden border border-slate-800 bg-cover bg-center" style = "background-image:url('${u}')"></div>`
   ).join("");
 
-  // Events
-  const eg = $("#event-grid");
-  eg.innerHTML = EVENTS.map(
+  // Nos Events
+  const oeg = $("#nos-events-grid");
+  oeg.innerHTML = NOSEVENTS.map(
     (e) => `
 <article class= "card overflow-hidden">
-        <div class="h-40 bg-cover bg-center" style="background-image:url('${e.img}')"></div>
+        <div class="h-40 bg-cover bg-[50%_50%]" style="background-image:url('${e.img}');"></div>
         <div class="p-4">
           <div class="text-sm text-slate-400">${e.date}</div>
           <h3 class="font-semibold">${e.title}</h3>
@@ -186,22 +207,50 @@ document.addEventListener("DOMContentLoaded", function () {
       </article> `
   ).join("");
 
+  // Vos Events
+  const yeg = $("#vos-events-grid");
+  yeg.innerHTML = VOSEVENTS.map(
+    (e) => `
+<article class= "card overflow-hidden">
+        <div class="h-40 bg-cover bg-[50%_70%]" style="background-image:url('${e.img}');"></div>
+        <div class="p-4">
+          <h3 class="font-semibold">${e.title}</h3>
+          <p class="text-slate-400 text-sm">${e.desc}</p>
+        </div>
+      </article> `
+  ).join("");
+
   // Forms (demo)
-  $("#resa").addEventListener("submit", (e) => {
-    e.preventDefault();
-    $("#resa-msg").textContent = "Réservation envoyée ✔️ (démo)";
-    e.target.reset();
-  });
-  $("#b2b").addEventListener("submit", (e) => {
-    e.preventDefault();
-    $("#b2b-msg").textContent = "Demande envoyée ✔️ (démo)";
-    e.target.reset();
-  });
-  $("#nl").addEventListener("submit", (e) => {
-    e.preventDefault();
-    $("#nl-msg").textContent = "Inscription confirmée ✔️ (démo)";
-    e.target.reset();
-  });
+
+  // RESA
+  const resa = $("#resa");
+  if (resa) {
+    resa.addEventListener("submit", (e) => {
+      e.preventDefault();
+      $("#resa-msg").textContent = "Réservation envoyée ✔️ (démo)";
+      e.target.reset();
+    });
+  }
+
+  // B2B
+  const b2b = $("#b2b");
+  if (b2b) {
+    b2b.addEventListener("submit", (e) => {
+      e.preventDefault();
+      $("#b2b-msg").textContent = "Demande envoyée ✔️ (démo)";
+      e.target.reset();
+    });
+  }
+
+  // Newsletter
+  const nl = $("#nl");
+  if (nl) {
+    nl.addEventListener("submit", (e) => {
+      e.preventDefault();
+      $("#nl-msg").textContent = "Inscription confirmée ✔️ (démo)";
+      e.target.reset();
+    });
+  }
 
   // Mobile nav
   //   document.getElementById("burger").addEventListener("click", () => {
@@ -215,8 +264,40 @@ document.addEventListener("DOMContentLoaded", function () {
   const burger = document.getElementById("burger");
   const mobile = document.getElementById("mobile");
 
-  burger.addEventListener("click", () => {
-    burger.classList.toggle("open");
-    mobile.classList.toggle("hidden");
+  // Toggle menu
+  burger.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    const isOpening = !mobile.classList.contains("hidden");
+
+    if (mobile.classList.contains("hidden")) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
   });
+
+  // Fermeture extérieure
+  document.addEventListener("click", (e) => {
+    if (!mobile.contains(e.target) && !burger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  function openMenu() {
+    mobile.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      mobile.classList.remove("opacity-0", "scale-95");
+      mobile.classList.add("opacity-100", "scale-100");
+    });
+  }
+
+  function closeMenu() {
+    mobile.classList.add("opacity-0", "scale-95");
+    mobile.classList.remove("opacity-100", "scale-100");
+
+    setTimeout(() => {
+      mobile.classList.add("hidden");
+    }, 300); // doit correspondre à duration-300
+  }
 });

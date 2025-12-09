@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Widget Simulation Zenchef</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background: #cda077;
+        color: #3b2a1c;
+        font-family: system-ui, sans-serif;
+      }
+
+      .accordion-content {
+        display: none;
+        opacity: 0;
+        transform: translateY(-5px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .accordion-content.visible {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body class="p-5">
+    <!-- HEADER -->
+    <div class="text-center text-xl font-bold tracking-wide mb-6">
+      LA CANAILLERIE
+    </div>
+
+    <!-- ACCORDÉON 1 : COUVERTS -->
+    <div class="mb-4">
+      <button
+        class="accordion-btn step-1 w-full flex justify-between items-center bg-white/20 px-4 py-3 rounded-lg"
+      >
+        <span class="font-semibold flex items-center gap-2"
+          >🍽️ <span id="couvertsLabel">Couvert(s)</span></span
+        >
+        <span class="chevron">▾</span>
+      </button>
+
+      <div class="accordion-content p-4 bg-white/20 rounded-lg mt-2">
+        <div class="grid grid-cols-5 gap-2 mb-3">
+          <script>
+            for (let i = 1; i <= 9; i++) {
+              document.write(`
+            <button onclick="setCouverts(${i})"
+              id="btnC${i}"
+              class="py-2 rounded-lg border border-black/30 text-center hover:bg-black/10">
+              ${i}
+            </button>
+          `);
+            }
+          </script>
+        </div>
+
+        <button
+          onclick="incrementCouverts()"
+          class="w-full text-center py-3 border border-black/40 rounded-lg font-bold"
+        >
+          +
+        </button>
+      </div>
+    </div>
+
+    <!-- ACCORDÉON 2 : DATE (UI améliorée style Zenchef) -->
+    <div class="mb-4">
+      <button
+        class="accordion-btn step-2 disabled w-full flex justify-between items-center bg-white/20 px-4 py-3 rounded-lg"
+      >
+        <span class="font-semibold flex items-center gap-2"
+          >📅 <span id="dateLabel">Choisir une date</span></span
+        >
+        <span class="chevron">▾</span>
+      </button>
+
+      <div class="accordion-content p-4 bg-white/20 rounded-lg mt-2">
+        <!-- UI mini Zenchef -->
+        <div class="flex gap-2 mb-3">
+          <button
+            onclick="selectDate('today')"
+            class="flex-1 py-3 rounded-lg bg-white/40 text-center hover:bg-black/10"
+          >
+            Aujourd’hui
+          </button>
+          <button
+            onclick="selectDate('tomorrow')"
+            class="flex-1 py-3 rounded-lg bg-white/40 text-center hover:bg-black/10"
+          >
+            Demain
+          </button>
+          <button
+            onclick="toggleCustomCalendar()"
+            class="flex-1 py-3 rounded-lg bg-white/40 text-center hover:bg-black/10"
+          >
+            Autre
+          </button>
+        </div>
+
+        <!-- Mini calendrier -->
+        <div
+          id="customCalendar"
+          class="hidden mt-3 p-4 rounded-lg bg-white/30 border border-black/20"
+        >
+          <label class="text-sm mb-1 block">Sélectionner une date :</label>
+          <input
+            type="date"
+            id="dateInput"
+            class="w-full p-3 rounded-lg border border-black/20"
+            onchange="setDateLabel()"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- ACCORDÉON 3 : HEURE -->
+    <div class="mb-4">
+      <button
+        class="accordion-btn step-3 disabled w-full flex justify-between items-center bg-white/20 px-4 py-3 rounded-lg"
+      >
+        <span class="font-semibold flex items-center gap-2"
+          >⏰ <span id="timeLabel">Choisir une heure</span></span
+        >
+        <span class="chevron">▾</span>
+      </button>
+
+      <div class="accordion-content p-4 bg-white/20 rounded-lg mt-2">
+        <select
+          id="timeInput"
+          class="w-full p-3 rounded-lg border border-black/20"
+          onchange="setTimeLabel()"
+        >
+          <option value="">-- Sélectionner --</option>
+          <option>12:00</option>
+          <option>12:15</option>
+          <option>12:30</option>
+          <option>12:45</option>
+          <option>13:00</option>
+          <option>13:15</option>
+          <option>13:30</option>
+          <option>13:45</option>
+          <option>14:00</option>
+          <option>19:00</option>
+          <option>19:15</option>
+          <option>19:30</option>
+          <option>19:45</option>
+          <option>20:00</option>
+          <option>20:15</option>
+          <option>20:30</option>
+          <option>20:45</option>
+          <option>21:00</option>
+          <option>21:15</option>
+          <option>21:30</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- MESSAGE CONFIRMATION -->
+    <div
+      id="confirmation"
+      class="hidden mt-4 p-4 bg-green-700 text-white rounded-lg text-center font-semibold"
+    >
+      ✔ Votre réservation est enregistrée (simulation)
+    </div>
+
+    <!-- BOUTON FINAL -->
+    <button
+      onclick="confirmReservation()"
+      class="w-full bg-black/70 text-white py-4 rounded-xl font-semibold mt-6"
+    >
+      Réserver
+    </button>
+
+    <p class="text-center mt-4 text-sm opacity-60">
+      Rendu possible par Zenchef — Simulation
+    </p>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      /* --------------------------
+   ACCORDÉONS (display + fade)
+--------------------------- */
+      const btns = document.querySelectorAll(".accordion-btn");
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (btn.classList.contains("disabled")) return;
+
+          const content = btn.nextElementSibling;
+
+          document.querySelectorAll(".accordion-content").forEach((c) => {
+            if (c !== content) {
+              c.style.display = "none";
+              c.classList.remove("visible");
+              c.previousElementSibling.querySelector(".chevron").textContent =
+                "▾";
+            }
+          });
+
+          if (content.style.display === "block") {
+            content.style.display = "none";
+            content.classList.remove("visible");
+            btn.querySelector(".chevron").textContent = "▾";
+          } else {
+            content.style.display = "block";
+            setTimeout(() => content.classList.add("visible"), 10);
+            btn.querySelector(".chevron").textContent = "▴";
+          }
+        });
+      });
+
+      /* --------------------------
+   1) COUVERTS
+--------------------------- */
+      let couverts = null;
+
+      function setCouverts(n) {
+        couverts = n;
+        document.getElementById("couvertsLabel").innerText = `${n} couvert(s)`;
+
+        for (let i = 1; i <= 9; i++) {
+          document
+            .getElementById("btnC" + i)
+            .classList.remove("bg-black/60", "text-white");
+        }
+        document
+          .getElementById("btnC" + n)
+          .classList.add("bg-black/60", "text-white");
+
+        document.querySelector(".step-2").classList.remove("disabled");
+      }
+
+      function incrementCouverts() {
+        couverts = couverts ? couverts + 1 : 2;
+        document.getElementById(
+          "couvertsLabel"
+        ).innerText = `${couverts} couverts`;
+        document.querySelector(".step-2").classList.remove("disabled");
+      }
+
+      /* --------------------------
+   2) DATE STYLE ZENCHEF
+--------------------------- */
+      function selectDate(type) {
+        const today = new Date();
+        let selected;
+
+        if (type === "today") selected = today;
+        if (type === "tomorrow")
+          selected = new Date(today.getTime() + 86400000);
+
+        document.getElementById("dateLabel").innerText =
+          selected.toLocaleDateString("fr-FR", {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+          });
+
+        document.querySelector(".step-3").classList.remove("disabled");
+      }
+
+      function toggleCustomCalendar() {
+        document.getElementById("customCalendar").classList.toggle("hidden");
+      }
+
+      function setDateLabel() {
+        const date = document.getElementById("dateInput").value;
+        if (!date) return;
+
+        const d = new Date(date);
+        document.getElementById("dateLabel").innerText = d.toLocaleDateString(
+          "fr-FR",
+          { weekday: "short", day: "numeric", month: "short" }
+        );
+
+        document.querySelector(".step-3").classList.remove("disabled");
+      }
+
+      /* --------------------------
+   3) HEURE
+--------------------------- */
+      function setTimeLabel() {
+        const t = document.getElementById("timeInput").value;
+        if (!t) return;
+        document.getElementById("timeLabel").innerText = t;
+      }
+
+      /* --------------------------
+   CONFIRMATION
+--------------------------- */
+      function confirmReservation() {
+        const box = document.getElementById("confirmation");
+        box.classList.remove("hidden");
+        // box.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
