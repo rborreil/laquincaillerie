@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "./img/sunset-surfeurs.jpg",
 
-    "https://images.unsplash.com/photo-1485872299829-c673f5194813?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YmFyfGVufDB8fDB8fHwy",
+    "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZnJ1aXRzJTIwZGUlMjBtZXIlMjBmcmFpc3xlbnwwfHwwfHx8Mg%3D%3D",
 
     "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29uY2VydHxlbnwwfHwwfHx8Mg%3D%3D",
 
